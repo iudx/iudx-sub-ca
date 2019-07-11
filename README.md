@@ -1,5 +1,8 @@
 # IUDX-Sub-CA
 
+![ISC license](https://img.shields.io/badge/license-ISC-blue.svg)
+
+
 Quickstart
 ========== 
 
@@ -7,7 +10,7 @@ Quickstart
 
 	- docker
 	- docker-compose
-#. Actual Setup
+#. Setup
 
     git clone https://github.com/rbccps-iisc/iudx-sub-ca
 	cd iudx-sub-ca
