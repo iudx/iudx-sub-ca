@@ -402,10 +402,12 @@ while True:
 		reply['From'] 		= CA_NAME + " sub-Certificate Authority at " + domain  + " <"+ EMAIL_USER + AT_EMAIL_DOMAIN + ">" 
 		reply['To'] 		= from_email 
 
-		reply_message   = "Dear " + CA_NAME + " user,\n\n"							\
-                                + "We have processed your request for a digital certificate for \""			\
-                                + from_email +"\"\nwith the following public key:\n\n"					\
-                                + public_key +"\n\nPlease find your digital ceritificate attached.\n\nRegards,\n"	\
+		reply_message   = "Dear " + CA_NAME + " user,\n\n"										\
+                                + "We have processed your request for a digital certificate for \""						\
+                                + from_email +"\"\nwith the following public key:\n\n"								\
+                                + public_key +"\n\nPlease find your digital ceritificate attached.\n\n"						\
+                                + "You may convert your certificate to P12 format to be imported into a web-browser by:\n"			\
+                                + "\topenssl pkcs12 -inkey private-key.pem -in certificate.pem -export -out certificate.p12\n\nRegards,\n"	\
                                 + CA_NAME + " sub-Certificate Authority at " + domain 
 
 		reply.attach (MIMEText(reply_message))
