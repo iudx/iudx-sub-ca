@@ -1,0 +1,16 @@
+FROM 		alpine:latest
+
+LABEL 		maintainers="barun@iisc.ac.in, jishnuj@iisc.ac.in"
+LABEL 		name="iudx-sub-ca"
+LABEL 		version="1"
+
+COPY		./server /server	
+
+WORKDIR         server
+
+RUN		apk add build-base libffi-dev libressl-dev python2-dev py-pip tmux 	&& \
+		pip install -r requirements.txt 					&& \
+		apk del build-base							&& \
+		chmod a+x ./run.sh
+
+CMD 		/server/run.sh

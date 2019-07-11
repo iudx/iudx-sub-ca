@@ -1,0 +1,4 @@
+mkdir -p cert
+cd scripts && ./create-cert
+cd ../docker && ./install 
+cd ..

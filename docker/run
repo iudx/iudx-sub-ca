@@ -1,0 +1,2 @@
+docker exec iudx-sub-ca rm -r /tmp/tmux-* > /dev/null 2>&1
+docker exec iudx-sub-ca tmux new-session -d -s sub-ca 'cd /iudx-sub-ca/server && ./run.sh' 

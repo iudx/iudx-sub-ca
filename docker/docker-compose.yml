@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  iudx-sub-ca: 
+    image: iudx/sub-ca:latest 
+    container_name: iudx-sub-ca
+    hostname: iudx-sub-ca
+    restart: on-failure
+    volumes:
+      - ..:/iudx-sub-ca

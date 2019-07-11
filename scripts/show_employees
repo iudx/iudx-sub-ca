@@ -1,0 +1,1 @@
+docker exec -i iudx-sub-ca /bin/ash -c "cd /iudx-sub-ca/scripts && sqlite3 ../server/employee.db 'SELECT * FROM employee;'"
