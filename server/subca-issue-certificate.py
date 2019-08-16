@@ -320,6 +320,8 @@ while True:
 		print "=== Request from ",from_email,"looks ok "
 		print "=== spf_pass = ",spf_pass," dkim_pass = ",dkim_pass
 
+		# TODO fix EMPLOYEE_DB
+		EMPLOYEE_DB = {}
 
 		if from_email not in EMPLOYEE_DB:
 			print "*** Employee "+from_email+" is not eligible to get IUDX certificate"
