@@ -49,6 +49,12 @@ from cryptography.hazmat.primitives.serialization import load_pem_private_key
 
 from conf import *
 
+openbsd = None
+try:
+	import openbsd
+except:
+	pass
+
 if re.search(r'\s',CA_NAME):
 	print "CA name cannot contain spaces"
 	sys.exit(-1)
@@ -87,7 +93,6 @@ if os.geteuid() == 0:
 	ca_uid = pwd.getpwnam(UNPRIVILEGED_USER).pw_uid
 	ca_gid = pwd.getpwnam(UNPRIVILEGED_USER).pw_gid
 
-	os.chmod("../cert/sub-ca.key",stat.S_IRUSR)
 	os.chmod("./jail",stat.S_IRUSR | stat.S_IXUSR | stat.S_IRGRP | stat.S_IXGRP | stat.S_IROTH | stat.S_IXOTH )
 
 	# ------------ pre-load some modules for chroot --------------
@@ -130,6 +135,10 @@ invalid_email_id_chars = [
 	":",
 	"\\",
 ]
+
+if openbsd:
+	openbsd.unveil("./jail","r")
+	openbsd.pledge("stdio rpath inet dns")
 
 while True:
 #{
