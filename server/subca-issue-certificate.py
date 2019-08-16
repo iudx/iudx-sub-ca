@@ -49,6 +49,8 @@ from cryptography.hazmat.primitives.serialization import load_pem_private_key
 
 from conf import *
 
+from employee import *
+
 openbsd = None
 try:
 	import openbsd
@@ -320,9 +322,6 @@ while True:
 		print "=== Request from ",from_email,"looks ok "
 		print "=== spf_pass = ",spf_pass," dkim_pass = ",dkim_pass
 
-		# TODO fix EMPLOYEE_DB
-		EMPLOYEE_DB = {}
-
 		if from_email not in EMPLOYEE_DB:
 			print "*** Employee "+from_email+" is not eligible to get IUDX certificate"
 			continue
@@ -333,10 +332,9 @@ while True:
 		first_name 	= EMPLOYEE_DB [from_email][0] 
 		last_name	= EMPLOYEE_DB [from_email][1] 
 		title 		= EMPLOYEE_DB [from_email][2] 
+		cert_class	= EMPLOYEE_DB [from_email][3] 
 
-		if is_trusted_email:
-			cert_class	= EMPLOYEE_DB [from_email][3] 
-		else:
+		if not is_trusted_email:
                         print "*** untrusted email :"+from_email
 		        continue	
 
