@@ -139,7 +139,7 @@ invalid_email_id_chars = [
 ]
 
 if openbsd:
-	openbsd.unveil("./jail","r")
+	openbsd.unveil("/nonexistent","r")
 	openbsd.pledge("stdio rpath inet dns")
 
 while True:
