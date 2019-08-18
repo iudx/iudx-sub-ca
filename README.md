@@ -12,13 +12,13 @@ Quickstart
 	- docker-compose
 # Setup
 
-    git clone https://github.com/rbccps-iisc/iudx-sub-ca
+    git clone https://github.com/iudx/iudx-sub-ca
 	cd iudx-sub-ca
 	./install-sub-CA <cert/sub-ca.crt> <cert/sub-ca.key>
 
 
 - NOTE: Either put your sub-ca.crt and sub-ca.key in **cert/** directory or give appropriate file path to install-sub-CA as arguments. 
-- Configure the [conf.py](https://github.com/rbccps-iisc/iudx-sub-ca/blob/master/server/conf.py "conf.py") in **server/** directory according to your organization's credentials and details.
+- Configure the [conf.py](https://github.com/iudx/iudx-sub-ca/blob/master/server/conf.py "conf.py") in **server/** directory according to your organization's credentials and details.
 
 # For creating Self-Signed Certificates (for testing)
 	
