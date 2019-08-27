@@ -333,6 +333,10 @@ while True:
 		last_name	= EMPLOYEE_DB [from_email][1] 
 		title 		= EMPLOYEE_DB [from_email][2] 
 		cert_class	= EMPLOYEE_DB [from_email][3] 
+		valid_days	= EMPLOYEE_DB [from_email][4]
+
+		now 		= datetime.datetime.utcnow() 
+		valid_till      = now + datetime.timedelta(days=valid_days)
 
 		if not is_trusted_email:
                         print "*** untrusted email :"+from_email
