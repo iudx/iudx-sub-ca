@@ -49,13 +49,13 @@ from cryptography.hazmat.primitives.serialization import load_pem_private_key
 
 from conf import *
 
-from employee import *
+from employee_db import *
 
 openbsd = None
 try:
-	import openbsd
+    import openbsd
 except:
-	pass
+    pass
 
 if re.search(r'\s',CA_NAME):
 	print "CA name cannot contain spaces"
@@ -70,7 +70,7 @@ f = open("../cert/sub-ca.crt", "r")
 ca_cert_pem = f.read().strip()
 f.close()
 
-f = open("../cert/sub-ca.key") #private key
+f = open("../cert/sub-ca.private.key")
 ca_private_key_pem = f.read().strip()
 f.close()
 
@@ -139,8 +139,8 @@ invalid_email_id_chars = [
 ]
 
 if openbsd:
-	openbsd.unveil("/nonexistent","r")
-	openbsd.pledge("stdio rpath inet dns")
+    openbsd.unveil("/nonexistent","r")
+    openbsd.pledge("stdio rpath inet dns")
 
 while True:
 #{
@@ -322,25 +322,24 @@ while True:
 		print "=== Request from ",from_email,"looks ok "
 		print "=== spf_pass = ",spf_pass," dkim_pass = ",dkim_pass
 
+
 		if from_email not in EMPLOYEE_DB:
 			print "*** Employee "+from_email+" is not eligible to get IUDX certificate"
 			continue
 
-		now 		= datetime.datetime.utcnow() 
-		valid_till      = now + datetime.timedelta(days=30)
-
-		first_name 	= EMPLOYEE_DB [from_email][0] 
-		last_name	= EMPLOYEE_DB [from_email][1] 
-		title 		= EMPLOYEE_DB [from_email][2] 
-		cert_class	= EMPLOYEE_DB [from_email][3] 
-		valid_days	= EMPLOYEE_DB [from_email][4]
-
-		now 		= datetime.datetime.utcnow() 
-		valid_till      = now + datetime.timedelta(days=valid_days)
+		first_name 	= EMPLOYEE_DB [from_email][0]
+		last_name	= EMPLOYEE_DB [from_email][1]
+		title 		= EMPLOYEE_DB [from_email][2]
+		cert_class	= EMPLOYEE_DB [from_email][3]
+		valid_days      = EMPLOYEE_DB [from_email][4]
 
 		if not is_trusted_email:
                         print "*** untrusted email :"+from_email
-		        continue	
+		        continue
+
+		now 		= datetime.datetime.now() 
+		now             = now - datetime.timedelta(days=1)
+		valid_till      = now + datetime.timedelta(days=valid_days + 1)
 
 		cn = title + " at " + from_email.split("@")[1] 
 
@@ -363,7 +362,7 @@ while True:
 		                cert_class = "1"
 				cn = resource_server_name # Change CN for resource server
 
-				valid_till = now + datetime.timedelta(days=365)
+				valid_till = now + datetime.timedelta(days=366)
 
 			except Exception as e:
 				print "*** something went wrong :"+from_email,e
@@ -392,7 +391,6 @@ while True:
 			.not_valid_before(now)				\
 			.not_valid_after(valid_till)
 
-		
 		cert = cb.sign(ca_private_key, hashes.SHA256(), default_backend())
 
 		certificate = cert.public_bytes(PEM).strip()
@@ -415,19 +413,22 @@ while True:
 		reply['From'] 		= CA_NAME + " sub-Certificate Authority at " + domain  + " <"+ EMAIL_USER + AT_EMAIL_DOMAIN + ">" 
 		reply['To'] 		= from_email 
 
-		reply_message   = "Dear " + CA_NAME + " user,\n\n"										\
-                                + "We have processed your request for a digital certificate for \""						\
-                                + from_email +"\"\nwith the following public key:\n\n"								\
-                                + public_key +"\n\nPlease find your digital ceritificate attached.\n\n"						\
-                                + "You may convert your certificate to P12 format to be imported into a web-browser by running the command:\n"			\
-                                + "$ openssl pkcs12 -inkey private-key.pem -in "+from_email+"-certificate.pem -export -out certificate.p12\n\nRegards,\n"	\
+                attachment_name = from_email+'-class-'+ str(cert_class) + '-certificate.pem'
+
+		reply_message   = "Dear " + CA_NAME + " user,\n\n"							                \
+                                + "We have processed your request for a class-" + str(cert_class) + " digital certificate for \""       \
+                                + from_email +"\"\nwith the following public key:\n\n"					                \
+                                + public_key +"\n\nPlease find your digital ceritificate attached.\n\n"                                 \
+                                + "You may convert the certificate to P12 format to be used in a web-browser by running the command:\n" \
+                                + "$ openssl pkcs12 -inkey private-key.pem -in "+ attachment_name  +" -export -out certificate.p12\n"\
+                                + "\nRegards,\n"\
                                 + CA_NAME + " sub-Certificate Authority at " + domain 
 
 		reply.attach (MIMEText(reply_message))
 
 		reply_attachment = MIMEBase('application',"application/x-x509-user-cert")
 		reply_attachment.set_payload(certificate)
-		reply_attachment.add_header('Content-Disposition', 'attachment; filename="'+from_email+'-certificate.pem"')
+		reply_attachment.add_header('Content-Disposition', 'attachment; filename="' + attachment_name + '"')
 		reply.attach (reply_attachment)
 
 		try:
