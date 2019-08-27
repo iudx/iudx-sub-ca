@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS employee(
                             first_name TEXT NOT NULL,
                             last_name  TEXT NOT NULL,
                             title TEXT NOT NULL,
-                            certificate_class VARCHAR NOT NULL
+                            certificate_class VARCHAR NOT NULL,
+                            days_expiry INT NOT NULL
 		     );

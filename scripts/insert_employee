@@ -1,10 +1,10 @@
-if [ $# -eq 5 ]
+if [ $# -eq 6 ]
 then
 	echo "Inserting $@"
-        docker exec -i iudx-sub-ca /bin/ash -c "cd /iudx-sub-ca/scripts && sqlite3 ../server/employee.db 'INSERT INTO employee values (\"$1\", \"$2\",\"$3\", \"$4\", \"$5\");'"
+        docker exec -i iudx-sub-ca /bin/ash -c "cd /iudx-sub-ca/scripts && sqlite3 ../server/employee.db 'INSERT INTO employee values (\"$1\", \"$2\",\"$3\", \"$4\", \"$5\",\"$6\");'"
 	echo "Insertion done"
 else
-        echo "invalid argument please pass 5 arguments : <email-id> <firstname> <lastname> <title> <certificate-class>"
+        echo "invalid argument please pass 6 arguments : <email-id> <firstname> <lastname> <title> <certificate-class> <expiry-in-days>"
         exit 0
 fi
 
