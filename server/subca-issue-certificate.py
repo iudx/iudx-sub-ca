@@ -109,6 +109,7 @@ if os.geteuid() == 0:
 
 	try:
 		os.chroot("./jail")
+		os.chdir("/")
 	except Exception as e:
 		print "*** Failed to chroot",e
 		sys.exit(-1)	
