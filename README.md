@@ -4,7 +4,10 @@
 
 # Introduction
 
-IUDX subca software allows organizations to issue certificates to their employees.
+IUDX sub-CA software allows organizations to issue certificates to their employees.
+This allows employees to get certificates to access ![IUDX](https://www.iudx.org.in) services.
+
+The sub-CAs must have a valid certificate from [IUDX Certificate Authority (CA)](https://ca.iudx.org.in). 
 
 # Setup on docker
 
@@ -16,9 +19,9 @@ Please install:
 Then run:
 
 ```bash
-	git clone https://github.com/iudx/iudx-sub-ca
-	cd iudx-sub-ca
-	./install.docker
+git clone https://github.com/iudx/iudx-sub-ca
+cd iudx-sub-ca
+./install.docker
 ```
 
 # Setup on OpenBSD 
