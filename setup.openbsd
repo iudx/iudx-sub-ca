@@ -9,6 +9,9 @@ then
 	exit
 fi
 
+pkg_add py-pip py-cryptography py-requests
+pip2.7 install openbsd
+
 cd /home/iudx-sub-ca
 mkdir -p cert
 
