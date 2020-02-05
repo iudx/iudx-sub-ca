@@ -26,7 +26,9 @@ cd iudx-sub-ca
 
 # Setup on OpenBSD 
 
-	ftp -o - https://iudx.org.in/install/subca | sh
+```bash
+ftp -o - https://iudx.org.in/install/subca | sh
+```
 
 # After install 
 
@@ -36,8 +38,10 @@ cd iudx-sub-ca
 
 # To manage employees in your organization 
 
-	Update the server/employee_db.py and restart the server
+- Update the server/employee_db.py and restart the server
 
 # To get docker logs
 
-    cd docker && ./logs # OR directly use `docker logs iudx-sub-ca`
+```bash
+cd docker && ./logs # OR directly use `docker logs iudx-sub-ca`
+```
