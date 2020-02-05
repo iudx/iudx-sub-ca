@@ -1,8 +1,0 @@
-file_name="sub-ca"
-
-openssl genrsa -out ../cert/$file_name.private.key 2048
-openssl req -new  -subj "/CN=localhost" -key ../cert/$file_name.key -out ../cert/$file_name.csr
-openssl x509 -req -days 365 -in ../cert/$file_name.csr -signkey ../cert/$file_name.key -out ../cert/$file_name.crt
-
-echo "DONE! Check in ../cert/"
-

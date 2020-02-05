@@ -12,32 +12,19 @@ Quickstart
 	- docker-compose
 # Setup
 
-    git clone https://github.com/iudx/iudx-sub-ca
+	git clone https://github.com/iudx/iudx-sub-ca
 	cd iudx-sub-ca
-	./install-sub-CA <cert/sub-ca.crt> <cert/sub-ca.key>
+	./setup
 
+# After install 
 
-- NOTE: Either put your sub-ca.crt and sub-ca.key in **cert/** directory or give appropriate file path to install-sub-CA as arguments. 
+- The setup will generate a self-signed certificate in **cert/** folder. Please update the **cert/** folder with real certificates and keys.
+ 
 - Configure the [conf.py](https://github.com/iudx/iudx-sub-ca/blob/master/server/conf.py "conf.py") in **server/** directory according to your organization's credentials and details.
 
-# For creating Self-Signed Certificates (for testing)
-	
-    cd scripts && ./create-cert
+# To manage employees in your organization 
 
-# Setup with Self-Signed Certificate and Key
-
-    cd iudx-sub-ca
-    ./install-self-signed-sub-CA
-
-# To insert an employee, use insert_employee script in **scripts/** directory
-
-    cd scripts/ && chmod a+x ./insert_employee
-    ./insert_employee <email-id> <firstname> <lastname> <title> <certificate-class> 
-
-# To see all inserted employees, use show_employees script in **scripts/** directory
-
-    cd scripts/ && chmod a+x ./show_employees
-    ./show_employees
+	Update the server/employee_db.py and restrat the server
 
 # To get docker logs
 

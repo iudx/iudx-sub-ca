@@ -1,0 +1,15 @@
+mkdir -p cert
+
+openssl genrsa -out cert/sub-ca.private.key 2048
+openssl req -new  -subj "/CN=localhost" -key cert/sub-ca.private.key -out cert/sub-ca.csr
+openssl x509 -req -days 365 -in cert/sub-ca.csr -signkey cert/sub-ca.private.key -out cert/sub-ca.crt
+
+echo
+echo "===> Created self-signed certificates in 'cert/' folder"
+echo
+
+cd docker
+
+docker-compose down -v
+docker-compose up -d
+chmod a+x ./run && ./run
