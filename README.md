@@ -13,9 +13,13 @@ Please install:
 - docker
 - docker-compose
 
+Then run:
+
+```bash
 	git clone https://github.com/iudx/iudx-sub-ca
 	cd iudx-sub-ca
 	./install.docker
+```
 
 # Setup on OpenBSD 
 
