@@ -1,6 +1,16 @@
+
+OS=`/usr/bin/uname`
+
+if [ "OS" == "OpenBSD" ]
+then
+	PYTHON="/usr/local/bin/python2"
+else
+	PYTHON="python2"
+fi
+
 while :
 do
-	/usr/bin/env python2 subca-issue-certificate.py
+	$PYTHON subca-issue-certificate.py
 	sleep 10
 	echo "######################### Restarting ..."
 done
