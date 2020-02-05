@@ -1,7 +1,7 @@
 
 OS=`/usr/bin/uname`
 
-if [ "OS" == "OpenBSD" ]
+if [ "$OS" == "OpenBSD" ]
 then
 	PYTHON="/usr/local/bin/python2"
 else
@@ -10,6 +10,7 @@ fi
 
 while :
 do
+	cd /home/iudx-sub-ca/server
 	$PYTHON subca-issue-certificate.py
 	sleep 10
 	echo "######################### Restarting ..."
