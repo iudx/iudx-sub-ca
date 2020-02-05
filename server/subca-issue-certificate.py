@@ -1,3 +1,5 @@
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 '''
 /*
  * Copyright (c) 2019
@@ -27,9 +29,14 @@ import stat
 import imaplib
 import smtplib
 import getpass
+import requests
 import tempfile
 import datetime
 import subprocess
+
+import urllib3
+# for telegram
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 import email
 from email import message_from_string 
@@ -47,7 +54,8 @@ from cryptography.hazmat.backends import default_backend
 
 from cryptography.hazmat.primitives.serialization import load_pem_private_key
 
-from conf import *
+from conf.common import *
+from conf.subca import *
 
 from employee_db import *
 
@@ -55,7 +63,24 @@ openbsd = None
 try:
     import openbsd
 except:
+    print "WARNING: openbsd package not found !!!"
     pass
+
+f = open("telegram.apikey", "r")
+telegram_apikey = f.read().strip()
+f.close()
+
+f = open("telegram.chatid", "r")
+telegram_chatid = f.read().strip()
+f.close()
+
+def send_telegram(message):
+        message = "[ rbccps-sub-CA ] : " + time.ctime()+ ' ' + message 
+        try:
+            # use telegram.org if telegram is not blocked
+            requests.get("https://149.154.167.220/bot" + telegram_apikey +"/sendMessage?chat_id="+telegram_chatid+"&text="+message,verify=False)
+        except:
+            print "COULD not send message to telegram"
 
 if re.search(r'\s',CA_NAME):
 	print "CA name cannot contain spaces"
@@ -140,7 +165,7 @@ invalid_email_id_chars = [
 ]
 
 if openbsd:
-    openbsd.unveil("/nonexistent","r")
+    openbsd.unveil("/","")
     openbsd.pledge("stdio rpath inet dns")
 
 while True:
@@ -445,6 +470,11 @@ while True:
 
 		except Exception as e: 
 			print '=== Something went wrong while sending certificate ... :', e
+
+                if cert_class == 1:
+                       send_telegram("class-" + str(cert_class) + " certificate issued to " + from_email + " for " + cn) 
+                else:
+                       send_telegram("class-" + str(cert_class) + " certificate issued to " + from_email)
 			
 		print "-------------------------------------------------\n"
 	#}
