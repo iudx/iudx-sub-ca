@@ -10,11 +10,16 @@ Quickstart
 
 	- docker
 	- docker-compose
-# Setup
+
+# Setup on docker
 
 	git clone https://github.com/iudx/iudx-sub-ca
 	cd iudx-sub-ca
 	./install.docker
+
+# Setup on OpenBSD 
+
+	```ftp -o - https://iudx.org.in/install/subca | sh```
 
 # After install 
 
