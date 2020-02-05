@@ -5,7 +5,7 @@
 # Introduction
 
 IUDX sub-CA software allows organizations to issue certificates to their employees.
-This allows employees to get certificates to access ![IUDX](https://www.iudx.org.in) services.
+This allows employees to get certificates to access [IUDX](https://www.iudx.org.in) services.
 
 The sub-CAs must have a valid certificate from [IUDX Certificate Authority (CA)](https://ca.iudx.org.in). 
 
