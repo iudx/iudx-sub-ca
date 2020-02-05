@@ -9,8 +9,13 @@ then
 	exit
 fi
 
-pkg_add git 
+pkg_add git py-pip
+
+pip2.7 install py-cryptography
+pip2.7 install py-py-requests
 
 cd /home
 git clone https://github.com/iudx/iudx-sub-ca
+
+cd iudx-sub-ca
 ./setup.openbsd

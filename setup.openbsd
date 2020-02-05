@@ -9,7 +9,12 @@ then
 	exit
 fi
 
-cd /home
+cd /home/iudx-sub-ca
+mkdir -p cert
+
+openssl genrsa -out cert/sub-ca.private.key 2048
+openssl req -new  -subj "/CN=localhost" -key cert/sub-ca.private.key -out cert/sub-ca.csr
+openssl x509 -req -days 365 -in cert/sub-ca.csr -signkey cert/sub-ca.private.key -out cert/sub-ca.crt
 
 syspatch
 echo syspatch >> /etc/daily.local
