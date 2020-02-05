@@ -6,12 +6,12 @@
 Quickstart
 ========== 
 
-# Please install the following dependencies manually, skip if already installed
+# Setup on docker
+
+	Please install:
 
 	- docker
 	- docker-compose
-
-# Setup on docker
 
 	git clone https://github.com/iudx/iudx-sub-ca
 	cd iudx-sub-ca
