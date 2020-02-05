@@ -14,7 +14,7 @@ Quickstart
 
 	git clone https://github.com/iudx/iudx-sub-ca
 	cd iudx-sub-ca
-	./setup
+	./install.docker
 
 # After install 
 

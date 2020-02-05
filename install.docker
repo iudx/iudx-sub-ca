@@ -1,3 +1,5 @@
+#!/bin/sh
+
 mkdir -p cert
 
 openssl genrsa -out cert/sub-ca.private.key 2048
