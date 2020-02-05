@@ -11,7 +11,7 @@ The sub-CAs must have a valid certificate from [IUDX Certificate Authority (CA)]
 
 # Setup on docker
 
-Please install:
+## Please install:
 
 - docker
 - docker-compose
