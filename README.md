@@ -2,16 +2,16 @@
 
 ![ISC license](https://img.shields.io/badge/license-ISC-blue.svg)
 
+# Introduction
 
-Quickstart
-========== 
+IUDX subca software allows organizations to issue certificates to their employees.
 
 # Setup on docker
 
-	Please install:
+Please install:
 
-	- docker
-	- docker-compose
+- docker
+- docker-compose
 
 	git clone https://github.com/iudx/iudx-sub-ca
 	cd iudx-sub-ca
