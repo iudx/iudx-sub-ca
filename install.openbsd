@@ -9,19 +9,8 @@ then
 	exit
 fi
 
-syspatch
-echo syspatch >> /etc/daily.local
+pkg_add git 
 
 cd /home
-
-pkg_add git 
 git clone https://github.com/iudx/iudx-sub-ca
-chmod 400 telegram.*
-
-echo /home/iudx-sub-ca/server/run.sh > /etc/rc.local
-echo /usr/bin/pkill tmux >> /etc/rc.shutdown
-
-rcctl disable sndiod slaacd smtpd xenodm 
-
-echo boot > /etc/boot.conf
-#reboot
+./setup.openbsd
