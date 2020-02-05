@@ -19,7 +19,7 @@ Quickstart
 
 # Setup on OpenBSD 
 
-	```ftp -o - https://iudx.org.in/install/subca | sh```
+	ftp -o - https://iudx.org.in/install/subca | sh
 
 # After install 
 
