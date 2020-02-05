@@ -20,11 +20,11 @@ Quickstart
 
 - The setup will generate a self-signed certificate in **cert/** folder. Please update the **cert/** folder with real certificates and keys.
  
-- Configure the [conf.py](https://github.com/iudx/iudx-sub-ca/blob/master/server/conf.py "conf.py") in **server/** directory according to your organization's credentials and details.
+- Configure the [subca.py](https://github.com/iudx/iudx-sub-ca/blob/master/server/conf/subca.py "subca.py") in **server/conf/** directory according to your organization's credentials and details.
 
 # To manage employees in your organization 
 
-	Update the server/employee_db.py and restrat the server
+	Update the server/employee_db.py and restart the server
 
 # To get docker logs
 
