@@ -22,7 +22,7 @@ openssl x509 -req -days 365 -in cert/sub-ca.csr -signkey cert/sub-ca.private.key
 syspatch
 echo syspatch >> /etc/daily.local
 
-chmod 400 telegram.*
+chmod 400 server/telegram.*
 
 echo /home/iudx-sub-ca/server/run.sh > /etc/rc.local
 echo /usr/bin/pkill tmux >> /etc/rc.shutdown
