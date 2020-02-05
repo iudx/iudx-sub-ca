@@ -1,21 +1,8 @@
-#!/bin/sh
-
-id=`id | cut -f1 -d'('`
-if [ $id != "uid=0" ]
-then
-	echo
-	echo "You must be root to run this script"
-	echo
-	exit
-fi
+cd /home
 
 syspatch
 echo syspatch >> /etc/daily.local
 
-cd /home
-
-pkg_add git 
-git clone https://github.com/iudx/iudx-sub-ca
 chmod 400 telegram.*
 
 echo /home/iudx-sub-ca/server/run.sh > /etc/rc.local
