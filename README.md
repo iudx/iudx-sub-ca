@@ -11,12 +11,12 @@ The sub-CAs must have a valid certificate from [IUDX Certificate Authority (CA)]
 
 # Setup on docker
 
-## Please install:
+#### Please install:
 
 - docker
 - docker-compose
 
-Then run:
+#### Then run:
 
 ```bash
 git clone https://github.com/iudx/iudx-sub-ca
