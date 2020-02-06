@@ -12,7 +12,7 @@ fi
 pkg_add git
 
 cd /home
-git clone https://github.com/iudx/iudx-sub-ca
+git clone --depth=1 https://github.com/iudx/iudx-sub-ca
 
 cd iudx-sub-ca
 ./setup.openbsd
