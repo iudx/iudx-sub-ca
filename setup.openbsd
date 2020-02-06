@@ -30,4 +30,4 @@ echo /usr/bin/pkill tmux >> /etc/rc.shutdown
 rcctl disable sndiod slaacd smtpd xenodm 
 
 echo boot > /etc/boot.conf
-#reboot
+reboot
