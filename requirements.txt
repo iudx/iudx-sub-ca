@@ -1,5 +1,5 @@
 asn1crypto==0.24.0
-astroid==1.4.9
+astroid==2.3.3
 backports==1.0
 backports.functools-lru-cache==1.4
 certifi==2019.11.28
