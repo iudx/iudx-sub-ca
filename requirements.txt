@@ -16,7 +16,7 @@ mccabe==0.6.1
 openbsd==0.1.0
 pycparser==2.19
 pylint==2.4.4
-requests==2.21.0
+requests==2.22.0
 six==1.14.0
 urllib3==1.25.8
 wrapt==1.10.10
