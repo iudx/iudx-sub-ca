@@ -1,4 +1,4 @@
-asn1crypto==0.24.0
+asn1crypto==1.3.0
 astroid==2.3.3
 backports==1.0
 backports.functools-lru-cache==1.4
