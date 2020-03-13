@@ -9,25 +9,15 @@ This allows employees to get certificates to access [IUDX](https://www.iudx.org.
 
 The sub-CAs must have a valid certificate from [IUDX Certificate Authority (CA)](https://ca.iudx.org.in). 
 
-# Setup on docker
-
-#### Please install:
-
-- docker
-- docker-compose
-
-#### Then run:
-
-```bash
-git clone https://github.com/iudx/iudx-sub-ca
-cd iudx-sub-ca
-./install.docker
-```
-
 # Setup on OpenBSD 
 
 ```bash
 ftp -o - https://iudx.org.in/install/subca | sh
+```
+# Setup on Linux (requires docker and docker-compose) 
+
+```bash
+curl https://iudx.org.in/install/subca | sh
 ```
 
 # After install 

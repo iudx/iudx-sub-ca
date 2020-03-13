@@ -15,7 +15,7 @@ if [ $os = "OpenBSD" ]
 then
 	pkg_add git
 else
-	sudo apt install git
+	apt install git
 fi
 
 cd /home
