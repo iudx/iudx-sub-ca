@@ -1,9 +1,9 @@
 from common import CA_NAME_LOWER
 
-IMAP_SERVER = 'imap.gmail.com'	# XXX change this
-SMTP_SERVER = 'smtp.gmail.com'	# XXX change this	
+IMAP_SERVER = 'imap.example.com'	# XXX change this
+SMTP_SERVER = 'smtp.example.com'	# XXX change this	
 
-AT_EMAIL_DOMAIN	= "@example.org" # XXX change this
+AT_EMAIL_DOMAIN	= "@example.org"	# XXX change this
 EMAIL_USER	= CA_NAME_LOWER + ".sub.ca"
 EMAIL_PASSWORD	= "password"
 

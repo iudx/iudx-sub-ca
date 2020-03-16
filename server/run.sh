@@ -11,7 +11,7 @@ fi
 while :
 do
 	cd /home/iudx-sub-ca/server
-	$PYTHON subca-issue-certificate.py
+	$PYTHON main.py
 	sleep 10
 	echo "######################### Restarting ..."
 done
