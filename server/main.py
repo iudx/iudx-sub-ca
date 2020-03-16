@@ -336,7 +336,7 @@ while True:
 
 		print "=== Request for certificate: ",from_email
 
-		public_key = csr.public_key().public_bytes(PEM,PKCS1).strip()
+		public_key = csr.public_key().public_bytes(PEM,SubjectPublicKeyInfo).strip()
 
 		if not public_key.startswith("-----BEGIN "): 
 			print "*** Public key BEGINS with :"+public_key
