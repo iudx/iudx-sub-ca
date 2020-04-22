@@ -6,7 +6,7 @@ certifi==2020.4.5.1
 cffi==1.14.0
 chardet==3.0.4
 configparser==5.0.0
-cryptography==2.9
+cryptography==2.9.1
 enum34==1.1.10
 idna==2.9
 ipaddress==1.0.23
