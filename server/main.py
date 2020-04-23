@@ -440,7 +440,10 @@ while True:
 		reply['From'] 		= CA_NAME + " sub-Certificate Authority at " + domain  + " <"+ EMAIL_USER + AT_EMAIL_DOMAIN + ">" 
 		reply['To'] 		= from_email 
 
-                attachment_name = from_email+'-class-'+ str(cert_class) + '-certificate.pem'
+                if cert_class == 1:
+                    attachment_name = resource_server_name+'-class-'+ str(cert_class) + '-certificate.pem'
+                else:
+                    attachment_name = from_email+'-class-'+ str(cert_class) + '-certificate.pem'
 
 		reply_message   = "Dear " + CA_NAME + " user,\n\n"							                \
                                 + "We have processed your request for a class-" + str(cert_class) + " digital certificate for \""       \
