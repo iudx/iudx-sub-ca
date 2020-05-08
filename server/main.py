@@ -299,8 +299,9 @@ while True:
 
 		csr_data = None
 
-		# check attachments
-		for attachment in payload:
+		# check first 5 attachments
+
+		for attachment in payload[0:5]:
 		#{
 			file_name = attachment.get_filename()
 			if file_name and file_name.endswith(".pem"):
