@@ -166,10 +166,12 @@ invalid_email_id_chars = [
 ]
 
 if openbsd:
-    openbsd.unveil("/","")
-    openbsd.pledge("stdio rpath inet dns")
+	openbsd.unveil("/","")
+	openbsd.pledge("stdio rpath inet dns")
 
-while True:
+start_time = time.time()
+
+while ((time.time() - start_time) < 21600): # restart every 6 hours
 #{
 	try:
 		m.select('INBOX')
