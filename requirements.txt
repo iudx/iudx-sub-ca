@@ -10,7 +10,7 @@ cryptography==2.9.2
 enum34==1.1.10
 idna==2.9
 ipaddress==1.0.23
-isort==4.3.21
+isort==5.0.6
 lazy-object-proxy==1.5.0
 mccabe==0.6.1
 openbsd==0.1.0
