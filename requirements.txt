@@ -15,7 +15,7 @@ lazy-object-proxy==1.5.0
 mccabe==0.6.1
 openbsd==0.1.0
 pycparser==2.20
-pylint==2.5.3
+pylint==2.9.4
 requests==2.24.0
 six==1.15.0
 urllib3==1.25.9
